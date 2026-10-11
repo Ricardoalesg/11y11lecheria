@@ -1,0 +1,364 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>11:11 Foodiebar</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@300;500;800;900&family=Figtree:wght@400;500;600;700&display=swap">
+<style>
+/* Layout: hero carbón con el reloj 11:11 como protagonista → menú sobre blanco cálido → reseñas sobre mostaza. Un solo look de marca. */
+:root{
+  --carbon:#2A2522;
+  --carbon-2:#3A332F;
+  --mostaza:#F6B629;
+  --mostaza-claro:#FDE9B8;
+  --papel:#FFFCF5;
+  --tinta:#221E1B;
+  --gris:#6E655E;
+  --linea:#E8DFCF;
+  --wa:#1FA855;
+  --display:"Big Shoulders Display", "Oswald", "Arial Narrow", sans-serif;
+  --body:"Figtree", "Helvetica Neue", Arial, sans-serif;
+  color-scheme: light;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+body{margin:0;background:var(--papel);color:var(--tinta);font-family:var(--body);font-size:16px;line-height:1.55}
+a{color:inherit}
+img{max-width:100%}
+.wrap{max-width:1120px;margin:0 auto;padding-inline:20px}
+h1,h2,h3{font-family:var(--display);line-height:1;margin:0;text-wrap:balance}
+.eyebrow{font-size:.78rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase}
+:focus-visible{outline:3px solid var(--mostaza);outline-offset:3px;border-radius:4px}
+
+/* NAV */
+.nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--carbon);border-bottom:1px solid rgba(246,182,41,.18)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:12px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--mostaza)}
+.brand-mark{font-family:var(--display);font-weight:800;font-size:1.7rem;letter-spacing:.02em}
+.brand-sub{font-family:var(--display);font-size:1.15rem;font-weight:300;color:var(--mostaza)}
+.brand-sub b{font-weight:800}
+.nav-links{display:flex;align-items:center;gap:22px}
+.nav-links a{text-decoration:none;color:#F3EBDD;font-weight:500;font-size:.95rem}
+.nav-links a:hover{color:var(--mostaza)}
+.btn{display:inline-flex;align-items:center;gap:10px;font-family:var(--body);font-weight:700;text-decoration:none;border-radius:999px;padding:14px 24px;font-size:1rem;border:0;cursor:pointer;transition:transform .15s ease, background .15s ease}
+.btn:hover{transform:translateY(-2px)}
+.btn-wa{background:var(--wa);color:#fff}
+.btn-wa:hover{background:#18924A}
+.btn-ghost{background:transparent;color:var(--mostaza);border:2px solid var(--mostaza)}
+.btn-sm{padding:9px 16px;font-size:.88rem}
+.btn svg{width:20px;height:20px;flex:none}
+@media (max-width:720px){.nav-links a:not(.btn){display:none}.brand-sub{display:none}}
+
+/* HERO */
+.hero{background:var(--carbon);color:#F3EBDD;position:relative;overflow:hidden}
+.hero .wrap{display:grid;grid-template-columns:1.15fr .85fr;gap:48px;align-items:center;padding-block:72px 84px}
+.hero-copy{min-width:0}
+.hero .eyebrow{color:var(--mostaza);display:inline-flex;align-items:center;gap:10px}
+.hero .eyebrow::before{content:"";width:28px;height:2px;background:var(--mostaza)}
+.hero h1{font-size:clamp(3.2rem,8vw,6.2rem);font-weight:900;text-transform:uppercase;margin-top:18px;color:#fff}
+.hero h1 span{color:var(--mostaza)}
+.hero p.lead{font-size:1.15rem;max-width:34em;color:#D9CFC2;margin:22px 0 30px}
+.hero-ctas{display:flex;flex-wrap:wrap;gap:12px}
+.facts{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:44px;border-top:1px solid rgba(246,182,41,.25)}
+.fact{padding:18px 16px 0 0;min-width:0}
+.fact + .fact{padding-left:16px;border-left:1px solid rgba(246,182,41,.25)}
+.fact .k{font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--mostaza);font-weight:700}
+.fact .v{font-family:var(--display);font-size:1.55rem;font-weight:800;color:#fff;line-height:1.1;margin-top:6px}
+.fact .s{font-size:.88rem;color:#BFB4A6;margin-top:4px}
+
+/* Reloj-logo */
+.clock{justify-self:center;width:min(380px,100%);aspect-ratio:1;border-radius:50%;background:var(--carbon-2);display:grid;place-items:center;position:relative;box-shadow:0 0 0 10px var(--carbon),0 0 0 12px rgba(246,182,41,.55),0 30px 80px rgba(0,0,0,.45)}
+.clock-inner{text-align:center;color:var(--mostaza)}
+.clock-digits{display:flex;align-items:center;justify-content:center;gap:4px;font-family:var(--display);font-weight:500;font-size:clamp(4.5rem,11vw,7rem);line-height:.9;letter-spacing:.02em}
+.clock-digits .colon{animation:blink 2s steps(1) infinite}
+.clock-digits svg{height:.82em;width:auto;margin-left:6px}
+@keyframes blink{50%{opacity:.15}}
+.clock-word{font-family:var(--display);font-size:clamp(2rem,4.6vw,2.8rem);font-weight:300;margin-top:10px}
+.clock-word b{font-weight:800}
+.ticks{position:absolute;inset:16px;border-radius:50%;background:repeating-conic-gradient(from -1deg, rgba(246,182,41,.6) 0 2deg, transparent 2deg 30deg);-webkit-mask:radial-gradient(circle, transparent 66%, #000 67%, #000 70%, transparent 71%);mask:radial-gradient(circle, transparent 66%, #000 67%, #000 70%, transparent 71%)}
+.wish{position:absolute;bottom:-14px;left:50%;transform:translateX(-50%) rotate(-3deg);background:var(--mostaza);color:var(--carbon);font-weight:700;padding:8px 18px;border-radius:999px;white-space:nowrap;font-size:.95rem}
+@media (max-width:860px){
+  .hero .wrap{grid-template-columns:1fr;padding-block:48px 64px}
+  .clock{width:min(300px,100%);order:-1}
+}
+@media (max-width:520px){
+  .facts{grid-template-columns:1fr}
+  .fact + .fact{padding-left:0;border-left:0;border-top:1px solid rgba(246,182,41,.25);margin-top:14px}
+  .fact{padding-right:0}
+}
+
+/* MENU */
+.menu{padding-block:84px}
+.sec-head{display:flex;flex-wrap:wrap;align-items:end;justify-content:space-between;gap:20px;margin-bottom:28px}
+.sec-head h2{font-size:clamp(2.6rem,6vw,4rem);font-weight:900;text-transform:uppercase}
+.sec-head .eyebrow{color:#B07F0E;margin-bottom:10px}
+.sec-head p{margin:0;color:var(--gris);max-width:30em}
+.tabs{display:flex;gap:8px;overflow-x:auto;padding-bottom:6px;margin-bottom:30px;scrollbar-width:thin}
+.tab{flex:none;font-family:var(--body);font-weight:600;font-size:.95rem;padding:10px 18px;border-radius:999px;border:1.5px solid var(--linea);background:#fff;color:var(--tinta);cursor:pointer}
+.tab:hover{border-color:var(--mostaza)}
+.tab[aria-selected="true"]{background:var(--carbon);color:var(--mostaza);border-color:var(--carbon)}
+.cats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px 56px}
+.cat{min-width:0}
+.cat h3{font-size:1.9rem;font-weight:800;text-transform:uppercase;display:flex;align-items:center;gap:12px;padding-bottom:10px;border-bottom:3px solid var(--carbon);margin-bottom:6px}
+.cat h3 small{font-family:var(--body);font-size:.75rem;letter-spacing:.12em;color:var(--gris);font-weight:600}
+.item{display:grid;grid-template-columns:1fr auto;gap:4px 16px;padding:16px 0;border-bottom:1px dashed var(--linea)}
+.item-name{font-weight:700;font-size:1.05rem;display:flex;flex-wrap:wrap;align-items:center;gap:8px}
+.tag{font-size:.68rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;background:var(--mostaza);color:var(--carbon);padding:3px 8px;border-radius:4px}
+.item-desc{grid-column:1/2;color:var(--gris);font-size:.93rem}
+.price{grid-row:1/3;grid-column:2;font-family:var(--display);font-weight:800;font-size:1.6rem;color:var(--carbon);font-variant-numeric:tabular-nums;align-self:start}
+.price sup{font-size:.55em;color:#B07F0E;margin-right:2px}
+.menu-note{margin-top:30px;display:flex;flex-wrap:wrap;gap:10px 24px;color:var(--gris);font-size:.9rem}
+.menu-note strong{color:var(--tinta)}
+@media (max-width:820px){.cats{grid-template-columns:1fr}}
+
+/* RESEÑAS */
+.reviews{background:var(--mostaza);padding-block:84px;color:var(--carbon)}
+.reviews .sec-head .eyebrow{color:var(--carbon)}
+.reviews .sec-head p{color:#4A3F2A}
+.rating{display:flex;align-items:center;gap:16px}
+.rating .big{font-family:var(--display);font-size:4.4rem;font-weight:900;line-height:.9}
+.stars{color:var(--carbon);letter-spacing:2px;font-size:1.1rem}
+.proto{display:inline-block;margin-top:6px;font-size:.75rem;font-weight:700;background:var(--carbon);color:var(--mostaza);padding:4px 10px;border-radius:4px;letter-spacing:.04em}
+.rev-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+.rev{background:var(--carbon);color:#EDE4D6;border-radius:18px;padding:26px;display:flex;flex-direction:column;gap:16px;min-width:0}
+.rev .stars{color:var(--mostaza)}
+.rev blockquote{margin:0;font-size:1.02rem;line-height:1.6}
+.rev footer{margin-top:auto;display:flex;align-items:center;gap:12px;padding-top:12px;border-top:1px solid rgba(246,182,41,.2)}
+.avatar{width:40px;height:40px;border-radius:50%;background:var(--mostaza);color:var(--carbon);display:grid;place-items:center;font-weight:800;flex:none}
+.rev .who{font-weight:700;color:#fff;font-size:.95rem}
+.rev .src{font-size:.8rem;color:#B9AE9F}
+@media (max-width:900px){.rev-grid{grid-template-columns:1fr}}
+
+/* CIERRE */
+.closing{background:var(--carbon);color:#F3EBDD;padding-block:56px}
+.closing .wrap{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:24px}
+.closing h2{font-size:clamp(2.2rem,5vw,3.2rem);font-weight:900;text-transform:uppercase;color:#fff}
+.closing h2 span{color:var(--mostaza)}
+.closing p{margin:8px 0 0;color:#BFB4A6}
+.foot{background:#1F1B19;color:#9C9186;font-size:.85rem;padding-block:18px}
+.foot .wrap{display:flex;flex-wrap:wrap;gap:8px 20px;justify-content:space-between}
+
+/* WhatsApp flotante */
+.wa-float{position:fixed;right:18px;bottom:calc(18px + env(safe-area-inset-bottom,0px));z-index:30;width:60px;height:60px;border-radius:50%;background:var(--wa);display:grid;place-items:center;box-shadow:0 10px 30px rgba(0,0,0,.3);transition:transform .15s ease}
+.wa-float:hover{transform:scale(1.07)}
+.wa-float svg{width:32px;height:32px}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="wa" viewBox="0 0 32 32"><path fill="currentColor" d="M16.04 3C9 3 3.3 8.7 3.3 15.73c0 2.25.6 4.45 1.72 6.38L3.2 29l7.06-1.8a12.7 12.7 0 0 0 5.78 1.4h.01c7.03 0 12.74-5.7 12.74-12.73A12.73 12.73 0 0 0 16.04 3Zm0 23.4h-.01a10.6 10.6 0 0 1-5.4-1.48l-.39-.23-4.19 1.07 1.12-4.08-.25-.42a10.56 10.56 0 0 1-1.62-5.53c0-5.84 4.75-10.6 10.6-10.6a10.6 10.6 0 0 1 10.59 10.6c0 5.85-4.76 10.67-10.45 10.67Zm5.81-7.93c-.32-.16-1.88-.93-2.17-1.03-.29-.11-.5-.16-.71.16-.21.32-.82 1.03-1 1.24-.19.21-.37.24-.69.08-.32-.16-1.34-.5-2.56-1.58-.94-.84-1.58-1.88-1.77-2.2-.18-.32-.02-.49.14-.65.15-.14.32-.37.48-.56.16-.18.21-.32.32-.53.1-.21.05-.4-.03-.56-.08-.16-.71-1.71-.98-2.35-.26-.62-.52-.53-.71-.54h-.61c-.21 0-.56.08-.85.4-.29.32-1.11 1.09-1.11 2.65 0 1.57 1.14 3.08 1.3 3.29.16.21 2.24 3.42 5.43 4.8.76.33 1.35.52 1.81.67.76.24 1.45.2 2 .12.61-.09 1.88-.77 2.14-1.51.27-.74.27-1.38.19-1.51-.08-.13-.29-.21-.61-.37Z"/></symbol>
+  <symbol id="fork" viewBox="0 0 24 64"><path fill="currentColor" d="M3 0h2.4v18H8V0h2.6v18h2.6V0h2.4v18H18V0h2.4v20c0 4.6-3 7.8-6.4 8.8V64H8.2V28.8C5 27.8 3 24.6 3 20V0Z"/></symbol>
+</svg>
+
+<nav class="nav" aria-label="Principal">
+  <div class="wrap">
+    <a class="brand" href="#inicio" aria-label="11:11 Foodiebar, inicio">
+      <span class="brand-mark">11:11</span>
+      <span class="brand-sub">foodie<b>bar</b></span>
+    </a>
+    <div class="nav-links">
+      <a href="#inicio">Inicio</a>
+      <a href="#menu">Menú</a>
+      <a href="#resenas">Reseñas</a>
+      <a class="btn btn-wa btn-sm wa-link" href="#" target="_blank" rel="noopener"><svg><use href="#wa"/></svg>Reservar</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero" id="inicio">
+  <div class="wrap">
+    <div class="hero-copy">
+      <span class="eyebrow">Lechería · Anzoátegui · desde 2019</span>
+      <h1>Pide un deseo,<br><span>nosotros lo servimos.</span></h1>
+      <p class="lead">Pastas, burgers, cortes y cócteles de autor en un foodiebar hecho para quedarse. Desde 2019 recibimos a Lechería de martes a domingo, a partir de las 11 am.</p>
+      <div class="hero-ctas">
+        <a class="btn btn-wa wa-link" href="#" target="_blank" rel="noopener"><svg><use href="#wa"/></svg>Escríbenos por WhatsApp</a>
+        <a class="btn btn-ghost" href="#menu">Ver el menú</a>
+      </div>
+      <div class="facts">
+        <div class="fact">
+          <div class="k">Dónde estamos</div>
+          <div class="v">Av. Principal de Lechería</div>
+          <div class="s">Frente al Day Hospital</div>
+        </div>
+        <div class="fact">
+          <div class="k">Horario</div>
+          <div class="v">Mar a Dom</div>
+          <div class="s">11:00 am – 11:00 pm</div>
+        </div>
+        <div class="fact">
+          <div class="k">Trabajando</div>
+          <div class="v">Desde 2019</div>
+          <div class="s">7 años sirviendo deseos</div>
+        </div>
+      </div>
+    </div>
+    <div class="clock" aria-hidden="true">
+      <div class="ticks"></div>
+      <div class="clock-inner">
+        <div class="clock-digits">11<span class="colon">:</span>11<svg viewBox="0 0 24 64"><use href="#fork"/></svg></div>
+        <div class="clock-word">foodie<b>bar</b></div>
+      </div>
+      <span class="wish">✦ Pide un deseo</span>
+    </div>
+  </div>
+</header>
+
+<main>
+<section class="menu" id="menu" aria-labelledby="menu-title">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <div class="eyebrow">La carta</div>
+        <h2 id="menu-title">Menú</h2>
+      </div>
+      <p>Precios en dólares. Aceptamos pago en bolívares a tasa BCV del día, efectivo y pago móvil.</p>
+    </div>
+
+    <div class="tabs" role="tablist" aria-label="Categorías del menú" id="tabs">
+      <button class="tab" role="tab" id="tab-todo" aria-selected="true" data-cat="todo">Todo</button>
+      <button class="tab" role="tab" id="tab-entradas" aria-selected="false" data-cat="entradas">Entradas</button>
+      <button class="tab" role="tab" id="tab-pastas" aria-selected="false" data-cat="pastas">Pastas</button>
+      <button class="tab" role="tab" id="tab-burgers" aria-selected="false" data-cat="burgers">Burgers</button>
+      <button class="tab" role="tab" id="tab-fuertes" aria-selected="false" data-cat="fuertes">Platos fuertes</button>
+      <button class="tab" role="tab" id="tab-postres" aria-selected="false" data-cat="postres">Postres</button>
+      <button class="tab" role="tab" id="tab-bebidas" aria-selected="false" data-cat="bebidas">Bebidas</button>
+    </div>
+
+    <div class="cats" id="cats"></div>
+
+    <div class="menu-note">
+      <span><strong>Delivery y pickup:</strong> pide por WhatsApp.</span>
+      <span><strong>Servicio:</strong> 10% no incluido.</span>
+    </div>
+  </div>
+</section>
+
+<section class="reviews" id="resenas" aria-labelledby="rev-title">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <div class="eyebrow">Lo que dicen</div>
+        <h2 id="rev-title">Reseñas</h2>
+      </div>
+      <div class="rating">
+        <div class="big">4.8</div>
+        <div>
+          <div class="stars" aria-label="4.8 de 5 estrellas">★★★★★</div>
+          <div>Promedio en Google</div>
+          <span class="proto">Reseñas de ejemplo · prototipo</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="rev-grid">
+      <article class="rev">
+        <div class="stars" aria-label="5 de 5 estrellas">★★★★★</div>
+        <blockquote>El linguini con pollo y maíz es de lo mejor que he probado en Lechería. Atención rápida y el ambiente de noche está buenísimo.</blockquote>
+        <footer><div class="avatar">C</div><div><div class="who">Cliente de ejemplo</div><div class="src">Google · hace 2 semanas</div></div></footer>
+      </article>
+      <article class="rev">
+        <div class="stars" aria-label="5 de 5 estrellas">★★★★★</div>
+        <blockquote>Fuimos a celebrar un cumpleaños y nos atendieron increíble. El cóctel "Pide un deseo" vale la pena, y los precios son justos.</blockquote>
+        <footer><div class="avatar">M</div><div><div class="who">Cliente de ejemplo</div><div class="src">Google · hace 1 mes</div></div></footer>
+      </article>
+      <article class="rev">
+        <div class="stars" aria-label="4 de 5 estrellas">★★★★☆</div>
+        <blockquote>Buenas porciones y la burger 11:11 muy jugosa. Los fines de semana se llena, así que conviene reservar por WhatsApp antes de ir.</blockquote>
+        <footer><div class="avatar">J</div><div><div class="who">Cliente de ejemplo</div><div class="src">Google · hace 1 mes</div></div></footer>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="closing">
+  <div class="wrap">
+    <div>
+      <h2>Tu mesa a las <span>11:11</span></h2>
+      <p>Reservas, pedidos y eventos privados por WhatsApp: +58 414-111-1111</p>
+    </div>
+    <a class="btn btn-wa wa-link" href="#" target="_blank" rel="noopener"><svg><use href="#wa"/></svg>Ir a WhatsApp</a>
+  </div>
+</section>
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <span>© 2026 11:11 Foodiebar · Lechería, Anzoátegui</span>
+    <span>Instagram: @11y11lecheria</span>
+  </div>
+</footer>
+
+<a class="wa-float wa-link" href="#" target="_blank" rel="noopener" aria-label="Escribir por WhatsApp" style="color:#fff"><svg><use href="#wa"/></svg></a>
+
+<script>
+// Número de WhatsApp (placeholder del prototipo)
+const WA = "584141111111";
+const WA_MSG = "¡Hola 11:11! Quiero hacer una reserva / pedido 🍽️";
+document.querySelectorAll(".wa-link").forEach(a => {
+  a.href = "https://wa.me/" + WA + "?text=" + encodeURIComponent(WA_MSG);
+});
+
+// Menú: edita aquí platos y precios
+const MENU = [
+  { id:"entradas", nombre:"Entradas", items:[
+    { n:"Tequeños de la casa", d:"8 unidades de queso blanco con salsa de ajo y guayaba picante.", p:7 },
+    { n:"Nachos 11:11", d:"Totopos, carne mechada, queso fundido, pico de gallo y guacamole.", p:10, tag:"Para compartir" },
+    { n:"Alitas BBQ o Buffalo", d:"10 alitas con bastones de apio y aderezo ranch.", p:11 },
+    { n:"Tostones con guacamole", d:"Tostones crujientes con guacamole fresco y suero.", p:8 }
+  ]},
+  { id:"pastas", nombre:"Pastas", items:[
+    { n:"Linguini con pollo y maíz", d:"Salsa cremosa de maíz tierno, pollo a la plancha y parmesano.", p:14, tag:"Favorito" },
+    { n:"Fettuccine Alfredo con camarones", d:"Camarones salteados al ajillo en salsa Alfredo.", p:16 },
+    { n:"Penne arrabbiata", d:"Salsa de tomate picante, albahaca y aceite de oliva.", p:11 }
+  ]},
+  { id:"burgers", nombre:"Burgers", items:[
+    { n:"Burger 11:11", d:"180 g de res, cheddar, tocineta, cebolla caramelizada y salsa de la casa. Con papas.", p:13, tag:"De la casa" },
+    { n:"Smash doble", d:"Doble carne smash, doble queso americano y pepinillos. Con papas.", p:12 },
+    { n:"Crispy chicken", d:"Pollo empanizado, coleslaw y mayo de chipotle. Con papas.", p:11 }
+  ]},
+  { id:"fuertes", nombre:"Platos fuertes", items:[
+    { n:"Churrasco 300 g", d:"Con chimichurri, papas rústicas y ensalada.", p:22 },
+    { n:"Salmón en salsa de parchita", d:"Sobre puré de batata y vegetales salteados.", p:20 },
+    { n:"Pollo a la plancha", d:"Pechuga marinada en finas hierbas, arroz y ensalada.", p:13 }
+  ]},
+  { id:"postres", nombre:"Postres", items:[
+    { n:"Brownie con helado", d:"Brownie tibio, helado de vainilla y sirope de chocolate.", p:6 },
+    { n:"Cheesecake de parchita", d:"Base de galleta y coulis de parchita.", p:6 },
+    { n:"Marquesa de chocolate", d:"Receta tradicional venezolana.", p:5 }
+  ]},
+  { id:"bebidas", nombre:"Bebidas", items:[
+    { n:"Pide un deseo", d:"Cóctel de la casa: ron, maracuyá, jengibre y espuma de limón.", p:9, tag:"Firma" },
+    { n:"Mojito clásico o de fresa", d:"Ron blanco, hierbabuena, lima y soda.", p:7 },
+    { n:"Limonada de hierbabuena", d:"Natural, frappé.", p:4 },
+    { n:"Cerveza nacional", d:"Botella o lata.", p:3 }
+  ]}
+];
+
+const cats = document.getElementById("cats");
+const esc = s => s.replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+cats.innerHTML = MENU.map(c => `
+  <div class="cat" data-cat="${c.id}">
+    <h3>${esc(c.nombre)} <small>${c.items.length} platos</small></h3>
+    ${c.items.map(i => `
+      <div class="item">
+        <div class="item-name">${esc(i.n)}${i.tag ? `<span class="tag">${esc(i.tag)}</span>` : ""}</div>
+        <div class="price"><sup>$</sup>${i.p}</div>
+        <div class="item-desc">${esc(i.d)}</div>
+      </div>`).join("")}
+  </div>`).join("");
+
+document.getElementById("tabs").addEventListener("click", e => {
+  const t = e.target.closest(".tab"); if (!t) return;
+  document.querySelectorAll(".tab").forEach(b => b.setAttribute("aria-selected", b === t));
+  const sel = t.dataset.cat;
+  document.querySelectorAll(".cat").forEach(c => { c.hidden = !(sel === "todo" || c.dataset.cat === sel); });
+});
+</script>
+</body>
+</html>
